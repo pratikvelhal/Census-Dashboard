@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- Bootstrap core CSS-->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- animate CSS-->
+    <link href="static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <!-- Icons CSS-->
+    <link href="static/css/icons.css" rel="stylesheet" type="text/css"/>
+    <!-- Sidebar CSS-->
+    <!-- <link href="assets/css/sidebar-menu.css" rel="stylesheet"/> -->
+    <!-- Custom Style-->
+    <link href="static/css/app-style.css" rel="stylesheet"/>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.js"></script>
+		<script src="http://d3-legend.susielu.com/d3-legend.min.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script>document.write("<link rel='stylesheet' href='static/css/style.css?v=" + Date.now() + "'><\/script>");</script>
+
+</head>
+<!-- Total Height = 600px
+Navbar+header = 0.15 * 800 =
+Map Ht = 0.5 * 600 = 300px
+Para = 0.35 * 600 = 210px -->
+
+<body>
+  <div id="wrapper" class="in">
+  <div class="clearfix"></div>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+      <!--Start Dashboard Content-->
+
+      <!-- <div class="row mt-4 margin-head">
+        <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+          <div class="card gradient-scooter">
+            <div class="card-body p-4 p-4-override">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 class="text-white">2050</h4>
+                <span class="text-white">Total Orders</span>
+              </div>
+              <div class="align-self-center w-icon"><i class="icon-basket-loaded text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+          <div class="card gradient-bloody">
+            <div class="card-body p-4 p-4-override">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 class="text-white">3250</h4>
+                <span class="text-white">Total Expenses</span>
+              </div>
+              <div class="align-self-center w-icon"><i class="icon-wallet text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+          <div class="card gradient-quepal">
+            <div class="card-body p-4 p-4-override">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 class="text-white">87.5%</h4>
+                <span class="text-white">Total Revenue</span>
+              </div>
+              <div class="align-self-center w-icon"><i class="icon-pie-chart text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+          <div class="card gradient-blooker">
+            <div class="card-body p-4 p-4-override">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 class="text-white">2550</h4>
+                <span class="text-white">New Users</span>
+              </div>
+              <div class="align-self-center w-icon"><i class="icon-user text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="row mt-4 margin-head">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-6">
+                <h3 id="titletext">Census Dashboard</h3>
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 pd-10">
+          <div class="card">
+    		   <div class="card-header">
+                    Marital Status of Population
+    			 </div>
+           <div class="card-body p-4-override">
+              <div id ="histogram">
+              </div>
+           </div>
+        </div>
+      </div>
+
+      <div class="col-sm-5 pd-10">
+        <div class="card">
+
+          <div class="card-header">
+            <span id="maplabel" class="map-text"></span>
+            <div class="card-action">
+               <div class="dropdown">
+                  <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
+                    <i class="icon-options"></i>
+                  </a>
+                  <div class="dropdown-menu animated fadeIn dropdown-menu-right">
+                    <a onclick="RunHealthCare()" class="dropdown-item">Filter by HealthCare</a>
+                    <a onclick="RunEconomy()" class="dropdown-item">Filter by Economy</a>
+                    <a onclick="RunImmigration()" class="dropdown-item">Filter by Immigration</a>
+                 </div>
+               </div>
+            </div>
+          </div>
+           <div class="card-body p-4-override">
+              <div id ="map">
+            	</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 pd-10">
+        <div class="card">
+  		   <div class="card-header">
+                  Literacy and employment of races
+  			 </div>
+         <div class="card-body p-4-override">
+           <div class="mca-holder"></div>
+         </div>
+      </div>
+    </div>
+
+    </div><!--End Row-->
+
+    <div class="row">
+      <div class="col-sm-6 pd-10">
+        <div class="card">
+         <div class="card-header">
+                  Size, Income and Expenses of Families
+         </div>
+         <div class="card-body p-4-override">
+           <div class="para-coord-holder"></div>
+         </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 pd-10">
+      <div class="card">
+          <div class="card-header">
+            <span id="wordcloudlabel" class="wordcloud-text"></span>
+          </div>
+         <div class="card-body p-4-override">
+            <div class="cloud"></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div><!--End Row-->
+  <!-- <div class="btn-group m-1 filter-dropdown" role="group">
+    <button type="button" class="btn btn-outline-dark dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter
+    </button>
+    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+      <a href="#" onclick="RunHealthCare()" class="dropdown-item">HealthCare</a>
+      <a href="#" onclick="RunEconomy()" class="dropdown-item">Economy</a>
+      <a href="#" onclick="RunImmigration()" class="dropdown-item">Immigration</a>
+    </div>
+  </div> -->
+
+
+
+    </div>
+  </div>
+</div>
+
+<!-- <div>
+  <nav id="nav">
+    <ul id="navigation">
+              <li><a href="#" onclick="RunHealthCare()">HealthCare</a></li>
+          	  <li><a href="#" onclick="RunEconomy()">Economy</a></li>
+              <li><a href="#" onclick="RunImmigration()">Immigration</a></li>
+    </ul>
+  </nav>
+</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+<!-- waves effect js -->
+<script src="static/js/waves.js"></script>
+
+<script>document.write("<script type='text/javascript' src='static/mca.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/para_coord.js?v=" + Date.now()  + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/statemap.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/map.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/wordcloud.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/domains.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='static/histogram.js?v=" + Date.now() + "'><\/script>");</script>
+</body>
+</html>
